@@ -246,3 +246,152 @@ copiedCounter.count = 7;
 console.log('copied', copiedCounter, 'original', originalCounter);
 // o/p => copied> Counter{count: 7} original> Counter{count: 5}
 */
+
+// remove duplicates from array.
+// using forEach
+/*
+const arr = [3, 3, 4, 4, 5, 5, 12, 9, 11];
+const uniqueArr = [];
+arr.forEach((item, id) => {
+  if (arr.indexOf(item) === id) {
+    uniqueArr.push(item);
+  }
+});
+console.log(uniqueArr);
+*/
+
+// using filters
+/*
+const arr = [3, 3, 4, 4, 5, 5, 12, 9, 11];
+const newArr = arr.filter((item, id) => arr.indexOf(item) === id);
+console.log(newArr);
+*/
+
+// using for loop
+/*
+const arr = [3, 3, 4, 4, 5, 5, 12, 9, 11];
+const uniqueArr = [];
+for (let i = 0; i < arr.length; i++) {
+  if (uniqueArr.indexOf(arr[i]) === -1) {
+    uniqueArr.push(arr[i]);
+  }
+}
+console.log(uniqueArr);
+*/
+
+// find the lenght of each word.
+/*
+  const input = 'how are you today';
+  const wordCount = input.split(' ').map((item) => `${item}: ${item.length}`);
+  console.log(wordCount);
+*/
+// Find the length of type of each element in the array.
+/*
+let input = [
+  function () {},
+  new Object(),
+  [],
+  {},
+  NaN,
+  Infinity,
+  undefined,
+  null,
+  0,
+];
+
+let count = {};
+input.map((item) => (count[typeof item] = (count[typeof item] || 0) + 1));
+console.log(count);
+*/
+
+// find the counts of the element repeted inside an array
+
+const input = ['a', 'b', 'c', 'c', 'c', 'b'];
+
+// using function
+/*
+function repetedElementInsideArray(items) {
+  let count = {};
+  items.forEach((item) => {
+    count[item] = (count[item] || 0) + 1;
+  });
+  return count;
+}
+
+let result = repetedElementInsideArray(input);
+console.log(result);
+*/
+
+// this can be simply done by map in one line.
+/*
+  count = {};
+  input.map((item) => (count[item] = (count[item] || 0) + 1));
+  console.log(count);
+*/
+
+// convert this nexted object to flat object.
+/*
+let user = {
+  name: 'John',
+  address: {
+    personal: {
+      city: 'London',
+      area: 'UK',
+    },
+    office: {
+      city: 'AmsterDam',
+      area: {
+        landmark: 'NeetherLands',
+        place: {
+          continent: 'Europe',
+        },
+      },
+    },
+  },
+};
+*/
+// using function this can make a flat object now matter how long object is nested.
+/*
+let finalObj = {};
+
+let convertToSingleObject = (user) => {
+  for (let key in user) {
+    if (typeof user[key] === 'object') {
+      convertToSingleObject(user[key]);
+    } else {
+      finalObj[key] = user[key];
+    }
+  }
+};
+convertToSingleObject(user);
+*/
+/*
+function foo() {
+  let a = b = 0;
+  a++;
+  return a;
+}
+
+foo();
+
+console.log(typeof a); // undefined
+console.log(typeof b); // number
+*/
+
+/*
+const clothes = ['jacket', 't-shirt'];
+clothes.length = 0;
+
+console.log(clothes[0]); // undefined
+*/
+/*
+const length = 4;
+const numbers = [];
+for (var i = 0; i < length; i++);
+{
+  numbers.push(i + 1);
+}
+console.log(numbers);
+*/
+
+// the o/p will be 5 bcx of ; if you see clearly.

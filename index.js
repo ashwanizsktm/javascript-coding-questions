@@ -395,3 +395,32 @@ console.log(numbers);
 */
 
 // the o/p will be 5 bcx of ; if you see clearly.
+
+// find whether the given string is pelindrome or not
+
+/*
+function isPalindrome(str) {
+  // Remove non-alphanumeric characters and convert to lowercase
+  const cleanStr = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+
+  let left = 0;
+  let right = cleanStr.length - 1;
+
+  while (left < right) {
+    if (cleanStr[left] !== cleanStr[right]) {
+      return false;
+    }
+    left++;
+    right--;
+  }
+
+  return true;
+}
+
+// Example usage
+const testString1 = "level";
+const testString2 = "levels";
+
+console.log(isPalindrome(testString1));  // Output: true
+console.log(isPalindrome(testString2));  // Output: false
+*/

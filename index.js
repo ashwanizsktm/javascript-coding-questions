@@ -424,5 +424,48 @@ const testString2 = "levels";
 console.log(isPalindrome(testString1));  // Output: true
 console.log(isPalindrome(testString2));  // Output: false
 */
+// find the maximum occurance of elements in the array.
+/*
+function findMaxOccurrence(arr) {
+  if (arr.length === 0) return null;
 
-function
+  const elementCount = {};
+
+  for (const element of arr) {
+    elementCount[element] = (elementCount[element] || 0) + 1;
+  }
+
+  let maxElement,
+    maxCount = 0;
+
+  for (const element in elementCount) {
+    if (elementCount[element] > maxCount) {
+      maxCount = elementCount[element];
+      maxElement = element;
+    }
+  }
+  return {
+    element: maxElement,
+    count: maxCount,
+  };
+}
+
+
+const arr = [2, 3, 1, 2, 2, 3, 4, 2]; // Example array.
+const result = findMaxOccurrence(arr);
+
+console.log('The element with the maximum occurrence is:', result.element);
+console.log('Maximum occurrence count:', result.count);
+*/
+
+// rotate the array
+/*
+function rotateRight(arr) {
+  console.log(arr.slice(arr.length - 2).concat(arr.slice(0, arr.length - 2)));
+}
+
+const arr = [1, 2, 3, 4, 5, 6, 7];
+// Rotate 2 positions to the right
+
+const rotatedArray = rotateRight(arr);
+*/

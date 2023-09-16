@@ -530,3 +530,68 @@ function missingNumInSeries() {
 let res = missingNumInSeries(series);
 console.log(res);
 */
+
+// Freezing An Object: Object.freeze()
+/**
+ * Once we freeze the object we can't add or modify the properties to it.
+ */
+/*
+  const user1 = {
+    age: 26,
+    mobile: 1993,
+    name: 'Talha',
+  };
+  Object.freeze(user1);
+  user1.name = 'Abu';
+  user1.class = 'senior';
+  console.log(user1);
+*/
+
+// Sealing an Object : Object.seal()
+/**
+ * it can modify the properties but it can't add or delete the new        properties to it.
+ */
+
+/*
+    const user1 = {
+      mobile: 1993,
+      name: 'Talha',
+    };
+    Object.seal(user1);
+    user1.name = 'ABU';
+    console.log(user1.name);  //"ABU"
+    user1.age = 26;
+    console.log(user1.age);   // undefined.
+
+*/
+/*
+var b = 1;
+function outer() {
+  var b = 2;
+  function inner() {
+    b++;
+    console.log(b); // NAN
+    var b = 5;
+    console.log(b); // 5
+  }
+  inner();
+}
+outer();
+*/
+
+// the above expression will return [undefined, undefined, 1]
+
+/*
+var b = [undefined];
+b[2] = 1;
+console.log(b);
+*/
+//  what if i put a[10]=25 will that crash, let's see that
+/*
+let a = [1, 2, 3];
+
+a[8] = 25;
+
+console.log(a);
+*/
+// the result will be [1,2,3,undefined, undefined, undefined, undefined, undefined, 25] bcz js will assign 1,2,3 and the emty space with undefined till index 7 & then it'll put 25 at the 8th index.

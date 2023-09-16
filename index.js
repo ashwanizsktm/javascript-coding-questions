@@ -469,3 +469,64 @@ const arr = [1, 2, 3, 4, 5, 6, 7];
 
 const rotatedArray = rotateRight(arr);
 */
+
+// Find the maximum elements in the array & find the second largest element in the array.
+/*
+const input = [3, 2, 5, 6, 32, 14, 16, [45, 23]];
+
+function findMax(input) {
+  let max = 0;
+  let secondMax = 0;
+  for (let i = 0; i < input.length; i++) {
+    if (max < input[i]) {
+      max = input[i];
+    } else if (secondMax < max) {
+      secondMax = input[i];
+    }
+  }
+  return {
+    max,
+    secondMax,
+  };
+}
+
+let res = findMax(input.flat());
+console.log(res);
+*/
+
+// find the missing number in the series..
+/*
+const series = [-3, 3, 6, 9, 15, 18, 24];
+
+function missingNumInSeries() {
+  let missingseriesArr = [];
+  let commonDiff = {};
+  let cdVaue,
+    maxCount = 0;
+  // finding common difference
+  for (let i = 0; i < series.length - 1; i++) {
+    let cd = series[i + 1] - series[i];
+    cd = commonDiff[cd] = (commonDiff[cd] || 0) + 1;
+  }
+
+  // finding maximum occurene and finalizing common difference
+  for (let key in commonDiff) {
+    if (maxCount < commonDiff[key]) {
+      maxCount = commonDiff[key];
+      cdVaue = key;
+    }
+  }
+
+  // checking the element where the cd is not same then we are adding
+  // the just previous object to the common difference.
+  for (let i = 0; i < series.length - 1; i++) {
+    if (series[i + 1] - series[i] != cdVaue) {
+      missingseriesArr.push(series[i] + parseInt(cdVaue));
+    }
+  }
+  return missingseriesArr;
+}
+
+let res = missingNumInSeries(series);
+console.log(res);
+*/

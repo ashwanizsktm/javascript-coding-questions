@@ -350,7 +350,7 @@ let user = {
   },
 };
 */
-// using function this can make a flat object now matter how long object is nested.
+// using function this can make a flat object now matter how long object is nested. (recurtion)
 /*
 let finalObj = {};
 
@@ -533,8 +533,10 @@ console.log(res);
 
 // Freezing An Object: Object.freeze()
 /**
- * Once we freeze the object we can't add or modify the properties to it.
+ * Once we freeze the object we can't add or modify the properties to it. but the
+ * object is nested then we can modify that let's see that and we'll try to solve it.
  */
+
 /*
   const user1 = {
     age: 26,
@@ -545,6 +547,49 @@ console.log(res);
   user1.name = 'Abu';
   user1.class = 'senior';
   console.log(user1);
+*/
+
+/*
+const user = {
+  name: 'Rahul',
+  class: {
+    section: 'Four',
+  },
+  depart: {
+    name: {
+      section: 'old departmet',
+    },
+  },
+};
+
+Object.freeze(user);
+user.class.section = 'Five';
+// user.depart.name.section = 'updated department';
+console.log(user);
+
+// here we can see that we've modified the obj after
+// freezing it.
+// bt we can do it manually.
+Object.freeze(user.class);
+user.class.section = 'Five';
+
+
+// we can make a deep freeze using recursion function;
+
+deepFreeze(user);
+// user.class.section = 'Five';
+// user.depart.name.section = 'updated department';
+
+// console.log(user);
+
+function deepFreeze(object) {
+  let propNames = Object.keys(object);
+  for (let name of propNames) {
+    let value = object[name];
+    value && typeof value === 'object' ? deepFreeze(value) : value;
+  }
+  return Object.freeze(object);
+}
 */
 
 // Sealing an Object : Object.seal()

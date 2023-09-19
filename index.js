@@ -460,17 +460,18 @@ console.log('Maximum occurrence count:', result.count);
 
 // rotate the array
 /*
-function rotateRight(arr) {
-  console.log(arr.slice(arr.length - 2).concat(arr.slice(0, arr.length - 2)));
+function rotateArr(arr, pos) {
+  let totalLen = arr.length;
+  let position = pos;
+  let rotateFrom = totalLen - position;
+  return arr.slice(rotateFrom, totalLen).concat(arr.slice(0, rotateFrom));
 }
-
-const arr = [1, 2, 3, 4, 5, 6, 7];
-// Rotate 2 positions to the right
-
-const rotatedArray = rotateRight(arr);
+const result = rotateArr([1, 2, 3, 4, 5, 6, 7, 8], 2);
+console.log(result);
 */
 
 // Find the maximum elements in the array & find the second largest element in the array.
+
 /*
 const input = [3, 2, 5, 6, 32, 14, 16, [45, 23]];
 
@@ -510,6 +511,7 @@ function missingNumInSeries() {
   }
 
   // finding maximum occurene and finalizing common difference
+
   for (let key in commonDiff) {
     if (maxCount < commonDiff[key]) {
       maxCount = commonDiff[key];
@@ -519,11 +521,13 @@ function missingNumInSeries() {
 
   // checking the element where the cd is not same then we are adding
   // the just previous object to the common difference.
+
   for (let i = 0; i < series.length - 1; i++) {
     if (series[i + 1] - series[i] != cdVaue) {
       missingseriesArr.push(series[i] + parseInt(cdVaue));
     }
   }
+  
   return missingseriesArr;
 }
 
@@ -533,7 +537,7 @@ console.log(res);
 
 // Freezing An Object: Object.freeze()
 /**
- * Once we freeze the object we can't add or modify the properties to it. but the
+ * Once we freeze the object we can't add or modify the properties to it. but if the
  * object is nested then we can modify that let's see that and we'll try to solve it.
  */
 
@@ -594,7 +598,7 @@ function deepFreeze(object) {
 
 // Sealing an Object : Object.seal()
 /**
- * it can modify the properties but it can't add or delete the new        properties to it.
+ * it can modify the properties but it can't add or delete the new     properties to it.
  */
 
 /*
@@ -607,8 +611,8 @@ function deepFreeze(object) {
     console.log(user1.name);  //"ABU"
     user1.age = 26;
     console.log(user1.age);   // undefined.
-
 */
+
 /*
 var b = 1;
 function outer() {
@@ -639,4 +643,27 @@ a[8] = 25;
 
 console.log(a);
 */
+
 // the result will be [1,2,3,undefined, undefined, undefined, undefined, undefined, 25] bcz js will assign 1,2,3 and the emty space with undefined till index 7 & then it'll put 25 at the 8th index.
+
+// recurtion : a function call itself is a recursive function.
+
+// basic
+/*
+function test() {
+
+    test(); 
+
+    // by writing such it will go into infinite loop maximum call stack
+    // to avoid that we need to write terminating condition
+}
+test()
+*/
+
+function countDown(n) {
+  for (let i = n; i > 0; i--) {
+    console.log(i);
+  }
+}
+
+countDown(3);

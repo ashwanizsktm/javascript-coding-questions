@@ -350,21 +350,6 @@ let user = {
   },
 };
 */
-// using function this can make a flat object now matter how long object is nested. (recurtion)
-/*
-let finalObj = {};
-
-let convertToSingleObject = (user) => {
-  for (let key in user) {
-    if (typeof user[key] === 'object') {
-      convertToSingleObject(user[key]);
-    } else {
-      finalObj[key] = user[key];
-    }
-  }
-};
-convertToSingleObject(user);
-*/
 /*
 function foo() {
   let a = b = 0;
@@ -659,7 +644,7 @@ function test() {
 }
 test()
 */
-
+/*
 function countDown(n) {
   for (let i = n; i > 0; i--) {
     console.log(i);
@@ -667,3 +652,108 @@ function countDown(n) {
 }
 
 countDown(3);
+*/
+
+// let's ue the recursive countDown
+/*
+function recursiveCountDown(n) {
+  //1st rule is to terminate the condition
+  if (n === 0) return;
+
+  console.log(n);
+  recursiveCountDown(n - 1);
+}
+recursiveCountDown(3); 
+*/
+// firstcall(n=3)
+// firstcall(3-1) => firstcall(2)
+// firstcall(2-1)=> firstcall(1)
+// firstcall(2-1)=> firstcall(0) here the exit condition works
+
+// calculate total in recursive function.
+/*
+function calculateTotal(n) {
+  // exit condition
+  if (n === 0) return;
+  let total = 0;
+
+  for (let i = 0; i <= n; i++) {
+    total += i;
+  }
+  calculateTotal(n - 1);
+  return total;
+}
+let res = calculateTotal(5);
+console.log(res);
+*/
+
+// let's take one other example...
+
+/*
+const teamStructure = {
+  name: 'John',
+  teams: [
+    {
+      name: 'Mark',
+      teams: [
+        {
+          name: 'Max',
+          teams: [],
+        },
+      ],
+    },
+  ],
+};
+
+function getTeamDetails(t) {
+  console.log('Team ...', t);
+  if (t.teams.length === 0) return;
+
+  t.teams.forEach((team) => {
+    console.log(team.name);
+    getTeamDetails(team);
+  });
+}
+
+getTeamDetails(teamStructure);
+
+*/
+
+// make nested object to a single object by concatination its keys
+// using recursive function
+/*
+let user = {
+  name: 'John',
+  address: {
+    home: {
+      city: 'London',
+      area: 'UK',
+    },
+    office: {
+      city: 'AmsterDam',
+      area: {
+        landmark: 'NeetherLands',
+        place: {
+          continent: 'Europe',
+        },
+      },
+    },
+  },
+};
+
+let finalObj = {};
+
+function convertToSignleObject(obj, prefix) {
+  for (let key in obj) {
+    if ((key && typeof obj[key]) === 'object') {
+      convertToSignleObject(obj[key], `${prefix}_${key}`);
+    } else {
+      finalObj[`${prefix}_${key}`] = obj[key];
+    }
+  }
+}
+
+const res = convertToSignleObject(user, 'user');
+
+console.log(finalObj);
+*/

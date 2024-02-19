@@ -837,13 +837,42 @@ console.log(result);
 
 // Call apply and bind
 
+//1. call
+/*
+Function.prototype.myCall = function (context, ...args) {
+  if (typeof this !== 'function') {
+    throw Error('it is not callable');
+  }
+  context.myFn = this;
+  context.myFn(...args);
+};
+*/
+
+//2. apply
+Function.prototype.myApply = function (context, ...args) {
+  console.log(context, this);
+  if (typeof this !== 'function') {
+    throw Error('it is not callable');
+  }
+
+  if (!Array.isArray(...args)) {
+    throw Error('Argument should be Array');
+  }
+  context.myFn = this;
+  context.myFn(...args);
+};
+
+// change all the methods in the example to see the changes
+
 let obj = {
   name: 'harsh',
   role: 'Developer',
 };
 
-function printDetails(city) {
-  console.log(this.name + ' works as a ' + this.role + ' & lives in ' + city);
+function printDetails(city, state) {
+  console.log(
+    this.name + ' works as a ' + this.role + ' & lives in ' + city + ' ' + state
+  );
 }
 
-printDetails.call(obj, 'Dehradun');
+printDetails.myApply(obj, ['Dehradun', 'Uttarakhand']);

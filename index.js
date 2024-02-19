@@ -757,3 +757,93 @@ const res = convertToSignleObject(user, 'user');
 
 console.log(finalObj);
 */
+
+//pollyfills
+
+//1. ForEach
+
+/*
+Array.prototype.myForEach = function (cb) {
+  for (let i = 0; i < this.length; i++) {
+    cb(this[i]);
+  }
+};
+
+const arr = [1, 2, 3, 4];
+
+arr.myForEach((item) => {
+  console.log(item * 3);
+});
+*/
+
+//2. map
+/*
+Array.prototype.myMap = function (cb) {
+  let newArr = [];
+  for (let i = 0; i < this.length; i++) {
+    newArr.push(cb(this[i]));
+  }
+
+  return newArr;
+};
+
+const arr = [1, 2, 3, 4];
+const res = arr.myMap((item) => item * 2);
+console.log(res);
+*/
+
+//3. Filter
+/*
+Array.prototype.myFilter = function (cb) {
+  let filteredArr = [];
+  for (let i = 0; i < this.length; i++) {
+    if (cb(this[i])) {
+      filteredArr.push(this[i]);
+    }
+  }
+
+  return filteredArr;
+};
+
+const arr = [1, 2, 3, 4];
+const res = arr.myFilter((item) => item !== 2);
+console.log(res);
+*/
+
+// 4. Reduce
+
+/*
+Array.prototype.myReduce = function (cb, initialValue) {
+  let acc = initialValue === undefined ? undefined : initialValue;
+
+  for (let i = 0; i < this.length; i++) {
+    if (acc !== undefined) {
+      acc = cb.call(undefined, acc, this[i], i, this);
+    } else {
+      acc = this[i];
+    }
+  }
+
+  return acc;
+};
+
+const arr = [1, 2, 3, 4, 5];
+const result = arr.myReduce((acc, cur) => {
+  console.log(acc, cur);
+  return acc * cur;
+});
+console.log(result);
+*/
+
+// Call apply and bind
+
+let obj = {
+  name: 'harsh',
+  role: 'Developer',
+};
+
+function printDetails(city) {
+  console.log(this.name + ' works as a ' + this.role + ' & lives in ' + city);
+}
+
+printDetails.call(obj, 'Dehradun');

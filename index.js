@@ -849,13 +849,14 @@ Function.prototype.myCall = function (context, ...args) {
 */
 
 //2. apply
-Function.prototype.myApply = function (context, ...args) {
+/*
+Function.prototype.myApply = function (context, args) {
   console.log(context, this);
   if (typeof this !== 'function') {
     throw Error('it is not callable');
   }
 
-  if (!Array.isArray(...args)) {
+  if (!Array.isArray(args)) {
     throw Error('Argument should be Array');
   }
   context.myFn = this;
@@ -876,3 +877,116 @@ function printDetails(city, state) {
 }
 
 printDetails.myApply(obj, ['Dehradun', 'Uttarakhand']);
+*/
+
+// finding unique elements in the array.
+/*
+const arr = [1, 2, 10, 10, 3, 22, 10, 3, 0];
+const uniqueArr = arr.filter((item, index) => arr.indexOf(item) !== index);
+
+console.log(uniqueArr);
+*/
+
+// find min and max elements in the array
+/*
+let arr = [4, 6, 3, -6, 12];
+
+function findMinAndMax(arr) {
+  let min = 0,
+    max = 0;
+  for (let item of arr) {
+    if (item < min) {
+      min = item;
+    } else if (item > max) {
+      max = item;
+    }
+  }
+  return { minimum: min, maximum: max };
+}
+
+console.log(findMinAndMax(arr));
+*/
+// find maximum distance in the array
+/*
+const booleanArray = [1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1];
+
+function findMaximumDistance(arr) {
+  let count = 0,
+    maxArr = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 0) {
+      count++;
+      maxArr.push(count);
+    } else if (arr[i] === 1) {
+      count = 0;
+    }
+  }
+  return Math.max(...maxArr);
+}
+
+console.log(findMaximumDistance(booleanArray));
+*/
+
+// find the count of the characters
+/*
+const str1 = 'hellobhai';
+
+let strArr = str1.split('');
+let reversedArr = [];
+for (let i = strArr.length - 1; i >= 0; i--) {
+  reversedArr.push(strArr[i]);
+}
+
+console.log(reversedArr.join(''));
+
+let count = {};
+
+for (let char of strArr) {
+  if (count[char]) {
+    count[char]++;
+  } else {
+    count[char] = 1;
+  }
+}
+
+console.log(count);
+
+*/
+/*
+const str = 'My name is xyz';
+
+const strArr = str.split(' ');
+let newStrArr = [];
+
+for (let i = 0; i < strArr.length; i++) {
+  newStr = strArr[i].split('').reverse().join('');
+  newStrArr.push(newStr);
+}
+
+console.log(newStrArr.join(' '));
+*/
+
+//  Two sum
+const nums = [3, 7, 20, 21, 4, 6, 40, 100];
+
+const target = 11;
+
+function myFunc(nums, target) {
+  let x = [];
+
+  for (let i = 0; i < nums.length; i++) {
+    let diff = target - nums[i];
+    if (x[nums[i]] !== undefined) {
+      console.log(nums[i], diff);
+      return [diff, nums[i]];
+    } else {
+      x[diff] = nums[i];
+    }
+  }
+}
+
+console.log(myFunc(nums, target));
+
+const numMap = new Map();
+console.log(numMap);
